@@ -77,10 +77,12 @@ class DetailsViewController: UIViewController {
         stackView.addArrangedSubview(copyright)
         copyright.backgroundColor = UIColor.lightGray
         copyright.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        copyright.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+        copyright.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+        copyright.leadingAnchor.constraint(equalTo:self.stackView.leadingAnchor).isActive = true
+        copyright.trailingAnchor.constraint(equalTo:self.stackView.trailingAnchor).isActive = true
         copyright.text  = "Copyright: " + copyrightData
+        copyright.numberOfLines = 0
         copyright.lineBreakMode = .byWordWrapping
-        copyright.textAlignment = .center
         
         let genre = UILabel()
         stackView.addArrangedSubview(genre)

@@ -49,8 +49,8 @@ class DetailsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor =  UIColor.black
-        label.layer.cornerRadius = 5
-        label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -64,6 +64,7 @@ class DetailsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         self.contentView.addSubview(thumbnailImageView)
         self.contentView.addSubview(containerView)
         
@@ -71,9 +72,9 @@ class DetailsTableViewCell: UITableViewCell {
         containerView.addSubview(albumLabel)
         
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo:self.thumbnailImageView.trailingAnchor, constant:10).isActive = true
-        containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-10).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant:40).isActive = true
+        containerView.leadingAnchor.constraint(equalTo:self.thumbnailImageView.trailingAnchor, constant: 10).isActive = true
+        containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant: -10).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant:70).isActive = true
         
         thumbnailImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
         thumbnailImageView.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, constant:10).isActive = true
@@ -83,11 +84,11 @@ class DetailsTableViewCell: UITableViewCell {
         artistNameLabel.topAnchor.constraint(equalTo:self.containerView.topAnchor).isActive = true
         artistNameLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
         artistNameLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
+        artistNameLabel.bottomAnchor.constraint(equalTo:albumLabel.topAnchor, constant: -10).isActive = true
         
         albumLabel.topAnchor.constraint(equalTo:self.artistNameLabel.bottomAnchor).isActive = true
         albumLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
-        albumLabel.topAnchor.constraint(equalTo:self.artistNameLabel.bottomAnchor).isActive = true
-        
+        albumLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
